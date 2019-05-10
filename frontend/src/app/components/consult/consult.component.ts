@@ -55,4 +55,14 @@ export class ConsultComponent implements OnInit {
     });
   }
 
+  fetchIssues() {
+    this.issueService
+      .getIssues()
+      .subscribe((data: Issue[]) => {
+        this.issue = data;
+        console.log('Data requested ...');
+        console.log(this.issue);
+      });
+  }
+
 }

@@ -33,12 +33,12 @@ router.route('/issues').get((req, res) => {
     });
 });
 
-router.route('/issues/:id').get((req, res) => {
-    Issue.findById(req.params.id, (err, issues) => {
+router.route('/issues/:name').get((req, res) => {
+    Issue.findOne(req.params.name, (err, issue) => {
         if (err)
             console.log(err);
         else
-            res.json(issues);
+            res.json(issue);
     });
 });
 

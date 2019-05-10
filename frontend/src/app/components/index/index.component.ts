@@ -18,27 +18,16 @@ export class IndexComponent implements OnInit {
     constructor(private issueService: IssueService, private router: Router) { }
   
     ngOnInit() {
-      this.fetchIssues();
     }
-  
-    fetchIssues() {
-      this.issueService
-        .getIssues()
-        .subscribe((data: Issue[]) => {
-          this.issues = data;
-          console.log('Data requested ...');
-          console.log(this.issues);
-        });
-    }
-  
-    editIssue(id) {
-      this.router.navigate([`/edit/${id}`]);
-    }
-  
-    deleteIssue(id) {
-      this.issueService.deleteIssue(id).subscribe(() => {
-        this.fetchIssues();
+
+    addIssue(title, responsible, description, severity) {
+      this.issueService.addIssue(title, responsible, description, severity).subscribe(() => {
+        this.router.navigate(['/index']);
       });
+    }
+  
+    consultarVigilancia(title) {
+      this.router.navigate([`/consult/${title}`]);
     }
 
 }
