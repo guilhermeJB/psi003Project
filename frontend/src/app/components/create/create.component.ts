@@ -17,7 +17,13 @@ export class CreateComponent implements OnInit {
   issues: Issue[];
   createForm: FormGroup;
   
-    constructor(private issueService: IssueService, private router: Router) { }
+    constructor(private issueService: IssueService, private router: Router, private fb: FormBuilder) {
+      this.createForm = this.fb.group({
+        nome: ['', Validators.required],
+        nVig: '',
+        vigTotal: ''
+      });
+    }
   
     ngOnInit() {
     }
@@ -29,8 +35,8 @@ export class CreateComponent implements OnInit {
         });
     }
 
-    addIssue(title, responsible, description) {
-      this.issueService.addIssue(title, responsible, description).subscribe(() => {
+    addIssue(nome, nVig, vigTotal) {
+      this.issueService.addIssue(nome, nVig, vigTotal).subscribe(() => {
         this.router.navigate(['/create']);
       });
     }

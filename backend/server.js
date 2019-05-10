@@ -47,6 +47,7 @@ router.route('/issues/add').post((req, res) => {
     issue.save()
         .then(issue => {
             res.status(200).json({'issue': 'Added sucessfully'});
+            console.log("success!");
         })
         .catch(err => {
             res.status(400).send('Failed to create new record');
