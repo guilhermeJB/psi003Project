@@ -27,7 +27,7 @@ export class IssueService {
     return this.http.post(`${this.uri}/issues/add`, issue);
   }
 
-  updateIssue(id, title, responsible, description, severity, status) {
+  /*updateIssue(id, title, responsible, description, severity, status) {
     const issue = {
       title: title,
       responsible: responsible,
@@ -36,7 +36,7 @@ export class IssueService {
       status: status
     };
     return this.http.post(`${this.uri}/issues/update/${id}`, issue);
-  }
+  }*/
 
   deleteIssue(id){
     return this.http.get(`${this.uri}/issues/delete/${id}`);

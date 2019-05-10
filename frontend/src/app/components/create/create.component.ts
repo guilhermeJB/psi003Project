@@ -37,7 +37,7 @@ export class CreateComponent implements OnInit {
 
     addIssue(nome, nVig, vigTotal) {
       this.issueService.addIssue(nome, nVig, vigTotal).subscribe(() => {
-        this.router.navigate(['/create']);
+        this.router.navigate(['/index']);
       });
     }
 

@@ -43,13 +43,13 @@ export class ConsultComponent implements OnInit {
     });
   }
 
-  updateIssue(title, responsible, description, severity, status) {
+/*  updateIssue(title, responsible, description, severity, status) {
     this.issueService.updateIssue(this.name, title, responsible, description, severity, status).subscribe(() => {
       this.snackBar.open('Issue updated successfully', 'OK', {
         duration: 3000
       });
     });
-  }
+  }*/
 
   fetchIssues() {
     this.issueService
