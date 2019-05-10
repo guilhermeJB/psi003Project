@@ -24,6 +24,8 @@ export class IssueService {
       nVig: responsible,
       vigTotal: description
     };
+
+    console.log(issue);
     return this.http.post(`${this.uri}/issues/add`, issue);
   }
 

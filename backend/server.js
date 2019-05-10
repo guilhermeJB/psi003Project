@@ -44,6 +44,8 @@ router.route('/issues/:id').get((req, res) => {
 });
 
 router.route('/issues/add').post((req, res) => {
+    console.log("Req object: " + req.body + "\n");
+
     let issue = new Issue(req.body);
     issue.save()
         .then(issue => {
@@ -86,4 +88,4 @@ router.route('/issues/delete/:id').get((req, res) => {
 
 app.use('/', router);
 
-app.listen(3003, () => console.log("Express server running on port 4000"));
+app.listen(3003, () => console.log("Express server running on port 3003"));
