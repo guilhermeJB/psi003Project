@@ -25,7 +25,7 @@ import { IssueService } from './issue.service';
 const routes: Routes = [
   { path: 'index', component: IndexComponent},
   { path: 'create', component: CreateComponent},
-  { path: 'consult/:id', component: ConsultComponent},
+  { path: 'consult', component: ConsultComponent},
   { path: 'availability/:id', component: AvailabilityComponent},
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full'}
