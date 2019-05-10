@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
 import { MatTableDataSource } from '@angular/material';
 
 import { Issue } from '../../issue.model';
@@ -12,26 +12,27 @@ import { IssueService } from '../../issue.service';
 })
 export class ConsultComponent implements OnInit {
 
-  name: String;
+  nome: String;
   issues: Issue[];
-  displayedColumns = ['nome', 'numero de vigilâncias', 'dias das vigilâncias'];
+  displayedColumns = ['nome', 'nVig', 'vigTotal'];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private issueService: IssueService, private router: Router) {
+  constructor(private issueService: IssueService, private router: Router, private route: ActivatedRoute) {
 
   }
 
   ngOnInit() {
-    /*this.route.params.subscribe(params => {
-      this.name = params.name;
-      this.issueService.getIssueById(this.name).subscribe(res => {
-        this.issue = res;
-        this.updateForm.get('nome').setValue(this.issue.nome);
-        this.updateForm.get('nVig').setValue(this.issue.nVig);
-        this.updateForm.get('vigTotal').setValue(this.issue.vigTotal);
+    this.route.params.subscribe(params => {
+      this.nome = params.id;
+      this.issueService
+      .getIssueById(this.nome)
+      .subscribe((data: Issue[]) => {
+        this.issues = data;
+        console.log('Data requested ...');
+        console.log(this.issues);
       });
-    });*/
-    this.fetchIssues();
+    });
+    //this.fetchIssues();
   }
   fetchIssues() {
     this.issueService

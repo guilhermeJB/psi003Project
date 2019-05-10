@@ -33,8 +33,9 @@ router.route('/issues').get((req, res) => {
     });
 });
 
-router.route('/issues/:name').get((req, res) => {
-    Issue.findById(req.params.id, (err, issue) => {
+router.route('/issues/:id').get((req, res) => {
+    console.log(req);
+    Issue.findOne({"name":req.name}, (err, issue) => {
         if (err)
             console.log(err);
         else
