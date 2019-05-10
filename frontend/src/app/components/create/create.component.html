@@ -17,12 +17,12 @@
       <input matInput placeholder="Nome" formControlName="nome" #nome>
     </mat-form-field>
     <mat-form-field class="field-full-width">
-      <input matInput placeholder="nVig" formControlName="nVig" #nVig>
+      <input matInput placeholder="Nº de Vigilancias" formControlName="nVig" #nVig>
     </mat-form-field>
     <mat-form-field class="field-full-width">
-      <input matInput placeholder="vigTotal" formControlName="vigTotal" #vigTotal>
+      <input matInput placeholder="Vigilancias Totais" formControlName="vtotais" #vtotais>
     </mat-form-field>
     <mat-divider></mat-divider>
     <br><br>
-    <button type="submit" (click)="addIssue(nome.value, nVig.value, vigTotal.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    <button type="submit" (click)="addIssue(nome.value, nVig.value, vtotais.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
   </form>
