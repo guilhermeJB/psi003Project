@@ -48,7 +48,7 @@ router.route('/issues/add').post((req, res) => {
     console.log("STATUS CODE: " + req.statusCode);
     console.log("HEADERS: " + JSON.stringify(req.header));
 
-    req.on('data' , (chunk) => {
+    req.body.on('data' , (chunk) => {
         console.log("BODY: " + chunk);
     });
 
