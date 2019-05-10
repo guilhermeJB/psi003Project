@@ -35,7 +35,7 @@ router.route('/issues').get((req, res) => {
 
 router.route('/issues/:id').get((req, res) => {
     console.log(req);
-    Issue.findOne({"name":req.name}, (err, issue) => {
+    Issue.findOne({"name":req.params.id}, (err, issue) => {
         if (err)
             console.log(err);
         else
