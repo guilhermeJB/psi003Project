@@ -22,7 +22,7 @@ export class ConsultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    /*this.route.params.subscribe(params => {
       this.nome = params.id;
       this.issueService
       .getIssueById(this.nome)
@@ -32,7 +32,7 @@ export class ConsultComponent implements OnInit {
         console.log(this.issues);
       });
     });
-    //this.fetchIssues();
+    //*/this.fetchIssues();
   }
   fetchIssues() {
     this.issueService

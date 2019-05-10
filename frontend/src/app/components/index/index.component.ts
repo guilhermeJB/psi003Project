@@ -26,8 +26,8 @@ export class IndexComponent implements OnInit {
       });
     }
   
-    consultarVigilancia(nome) {
+    /*consultarVigilancia(nome) {
       this.router.navigate([`/consult/${nome}`]);
-    }
+    }*/
 
 }

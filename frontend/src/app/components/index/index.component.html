@@ -46,13 +46,8 @@
   <mat-card>
     <button mat-raised-button color="primary" routerLink="/create">Criar Calendário</button>
     <button mat-raised-button color="primary" routerLink="/availability">Definir disponibilidade</button>
-
-        <h5>Introduza o seu nome:</h5>
-
-        <input matInput placeholder="nome" formControlName="nome" #nome>
-
-        
-        <button type="submit" (click)="consultarVigilancia(nome.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Consultar Vigilâncias.</button>
+    <button mat-raised-button color="primary" routerLink="/consult">Consultar Vigilâncias.</button>
+    <!--button type="submit" (click)="consultarVigilancia(nome.value)" [disabled]="updateForm.pristine || updateForm.invalid" mat-raised-button color="primary">Consultar Vigilâncias.</button-->
 
   </mat-card>
 </div>
