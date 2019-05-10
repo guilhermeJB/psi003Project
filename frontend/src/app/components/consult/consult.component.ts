@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { MatTableDataSource } from '@angular/material';
 
-import { MatSnackBar } from '@angular/material';
-
-import { IssueService } from '../../issue.service';
 import { Issue } from '../../issue.model';
+import { IssueService } from '../../issue.service';
 
 @Component({
   selector: 'app-consult',
@@ -16,19 +14,11 @@ export class ConsultComponent implements OnInit {
 
   name: String;
   issues: Issue[];
-  updateForm: FormGroup;
+  displayedColumns = ['nome', 'numero de vigilâncias', 'dias das vigilâncias'];
 
   // tslint:disable-next-line:max-line-length
-  constructor(private issueService: IssueService, private router: Router, private route: ActivatedRoute, private snackBar: MatSnackBar, private fb: FormBuilder) {
-    this.createForm();
-  }
+  constructor(private issueService: IssueService, private router: Router) {
 
-  createForm() {
-    this.updateForm = this.fb.group({
-      name: ['', Validators.required],
-      nVig: '',
-      vigTotal: ''
-    });
   }
 
   ngOnInit() {
