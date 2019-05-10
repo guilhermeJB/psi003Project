@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
-let ProfessoresSchema = new mongoose.Schema({
-    name: {
+let IssueSchema = new mongoose.Schema({
+    nome: {
         type:  String
     },
     nVig: {
@@ -13,4 +13,4 @@ let ProfessoresSchema = new mongoose.Schema({
 }
 });
 
-const Issue = module.exports = mongoose.model('issue', ProfessoresSchema);
+const Issue = module.exports = mongoose.model('issue', IssueSchema);

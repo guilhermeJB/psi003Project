@@ -15,7 +15,7 @@ import { Issue } from '../../issue.model';
 export class ConsultComponent implements OnInit {
 
   name: String;
-  issue: any = {};
+  issues: Issue[];
   updateForm: FormGroup;
 
   // tslint:disable-next-line:max-line-length
@@ -32,7 +32,7 @@ export class ConsultComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.route.params.subscribe(params => {
+    /*this.route.params.subscribe(params => {
       this.name = params.name;
       this.issueService.getIssueById(this.name).subscribe(res => {
         this.issue = res;
@@ -40,9 +40,19 @@ export class ConsultComponent implements OnInit {
         this.updateForm.get('nVig').setValue(this.issue.nVig);
         this.updateForm.get('vigTotal').setValue(this.issue.vigTotal);
       });
-    });
+    });*/
+    this.fetchIssues();
   }
-
+  fetchIssues() {
+    this.issueService
+      .getIssues()
+      .subscribe((data: Issue[]) => {
+        this.issues = data;
+        console.log('Data requested ...');
+        console.log(this.issues);
+      });
+  }
+}
 /*  updateIssue(title, responsible, description, severity, status) {
     this.issueService.updateIssue(this.name, title, responsible, description, severity, status).subscribe(() => {
       this.snackBar.open('Issue updated successfully', 'OK', {
@@ -50,15 +60,3 @@ export class ConsultComponent implements OnInit {
       });
     });
   }*/
-
-  fetchIssues() {
-    this.issueService
-      .getIssues()
-      .subscribe((data: Issue[]) => {
-        this.issue = data;
-        console.log('Data requested ...');
-        console.log(this.issue);
-      });
-  }
-
-}
