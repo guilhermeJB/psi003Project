@@ -28,13 +28,6 @@ export class CreateComponent implements OnInit {
     ngOnInit() {
     }
 
-    searchByName() {
-      this.issueService
-        .getIssues()
-        .subscribe((data: Issue[]) => {
-        });
-    }
-
     addIssue(nome, nVig, vigTotal) {
       this.issueService.addIssue(nome, nVig, vigTotal).subscribe(() => {
         this.router.navigate(['/index']);
