@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'index', component: IndexComponent},
   { path: 'create', component: CreateComponent},
   { path: 'consult', component: ConsultComponent},
-  { path: 'availability/:id', component: AvailabilityComponent},
+  { path: 'availability', component: AvailabilityComponent},
   { path: 'login', component: LoginComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
