@@ -20,9 +20,9 @@
       <input matInput placeholder="Nº de Vigilancias" formControlName="nVig" #nVig>
     </mat-form-field>
     <mat-form-field class="field-full-width">
-      <input matInput placeholder="Vigilancias Totais" formControlName="vtotais" #vtotais>
+      <input matInput placeholder="Dias das Vigilancias" formControlName="diasV" #diasV>
     </mat-form-field>
     <mat-divider></mat-divider>
     <br><br>
-    <button type="submit" (click)="addIssue(nome.value, nVig.value, vtotais.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+    <button type="submit" (click)="addIssue(nome.value, nVig.value, diasV.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
   </form>

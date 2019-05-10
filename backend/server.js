@@ -44,9 +44,16 @@ router.route('/issues/:id').get((req, res) => {
 });
 
 router.route('/issues/add').post((req, res) => {
-    console.log("Req object: " + req.body + "\n");
-
     let issue = new Issue(req.body);
+    console.log("STATUS CODE: " + req.statusCode);
+    console.log("HEADERS: " + JSON.stringify(req.header));
+
+    req.on('data' , (chunk) => {
+        console.log("BODY: " + chunk);
+    });
+
+
+
     issue.save()
         .then(issue => {
             res.status(200).json({'issue': 'Added sucessfully'});

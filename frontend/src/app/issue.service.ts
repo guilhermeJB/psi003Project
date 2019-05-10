@@ -26,6 +26,7 @@ export class IssueService {
     };
 
     console.log(issue);
+    console.log(this.http.post(`${this.uri}/issues/add`, issue));
     return this.http.post(`${this.uri}/issues/add`, issue);
   }
 
