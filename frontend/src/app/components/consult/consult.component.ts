@@ -14,7 +14,7 @@ import { Issue } from '../../issue.model';
 })
 export class ConsultComponent implements OnInit {
 
-  id: String;
+  name: String;
   issue: any = {};
   updateForm: FormGroup;
 
@@ -25,30 +25,26 @@ export class ConsultComponent implements OnInit {
 
   createForm() {
     this.updateForm = this.fb.group({
-      title: ['', Validators.required],
-      responsible: '',
-      description: '',
-      severity: '',
-      status: ''
+      name: ['', Validators.required],
+      nVig: '',
+      vigTotal: ''
     });
   }
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      this.id = params.id;
-      this.issueService.getIssueById(this.id).subscribe(res => {
+      this.name = params.name;
+      this.issueService.getIssueById(this.name).subscribe(res => {
         this.issue = res;
-        this.updateForm.get('title').setValue(this.issue.title);
-        this.updateForm.get('responsible').setValue(this.issue.responsible);
-        this.updateForm.get('description').setValue(this.issue.description);
-        this.updateForm.get('severity').setValue(this.issue.severity);
-        this.updateForm.get('status').setValue(this.issue.status);
+        this.updateForm.get('nome').setValue(this.issue.nome);
+        this.updateForm.get('nVig').setValue(this.issue.nVig);
+        this.updateForm.get('vigTotal').setValue(this.issue.vigTotal);
       });
     });
   }
 
   updateIssue(title, responsible, description, severity, status) {
-    this.issueService.updateIssue(this.id, title, responsible, description, severity, status).subscribe(() => {
+    this.issueService.updateIssue(this.name, title, responsible, description, severity, status).subscribe(() => {
       this.snackBar.open('Issue updated successfully', 'OK', {
         duration: 3000
       });

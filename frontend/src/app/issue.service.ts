@@ -18,12 +18,11 @@ export class IssueService {
     return this.http.get(`${this.uri}/issues/${name}`);
   }
 
-  addIssue(title, responsible, description, severity) {
+  addIssue(title, responsible, description) {
     const issue = {
-      title: title,
-      responsible: responsible,
-      description: description,
-      severity: severity
+      nome: title,
+      nVig: responsible,
+      vigTotal: description
     };
     return this.http.post(`${this.uri}/issues/add`, issue);
   }

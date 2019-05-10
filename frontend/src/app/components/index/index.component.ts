@@ -21,7 +21,7 @@ export class IndexComponent implements OnInit {
     }
 
     addIssue(title, responsible, description, severity) {
-      this.issueService.addIssue(title, responsible, description, severity).subscribe(() => {
+      this.issueService.addIssue(title, responsible, description).subscribe(() => {
         this.router.navigate(['/index']);
       });
     }
