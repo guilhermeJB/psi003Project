@@ -117,7 +117,16 @@ router.route('/issues/delete/:id').get((req, res) => {
         });
       });
 
-     console.log(Professor.find());
+     var query = Professor.find();
+     query.select("_id nome");
+
+     query.exec(function(err, data){
+        if(err) return handleError(err);
+
+        console.log(data);
+        console.log("---------------------------------------------------------------------------------------------------------------");
+        console.log(data[0]);
+     });
 
       //console.log(myId);
 
