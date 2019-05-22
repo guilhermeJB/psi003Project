@@ -6,6 +6,7 @@ var xlsx = require('xlsx');
 
 var Issue = require('./models/issue');
 var Professor = require('./models/professor');
+var UC = require('./models/uC');
 
 
 const app = express();
@@ -98,6 +99,23 @@ router.route('/issues/delete/:id').get((req, res) => {
             res.json('Remove successfully');
     });
 });
+
+
+
+    var joao = new Professor({_id: 0, nome: "Joao"});
+
+    joao.save(function (err) {
+        if (err) return handleError(err);
+      
+        var uc = new UC({
+            nome: "Aplicacoes Web",
+            regente: joao._id });
+      
+        uc.save(function (err) {
+          if (err) return handleError(err);
+          // thats it!
+        });
+      });
 
 app.use('/', router);
 

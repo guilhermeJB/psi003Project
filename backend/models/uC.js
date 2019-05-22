@@ -1,16 +1,8 @@
 var mongoose = require('mongoose');
 
 let CadeiraSchema = new mongoose.Schema({
-    nome: {
-        type:  String
-    },
-    regente: {
-        type: String
-    ,
-    professores: {
-        type: String
-    }
-}
+    nome:  String,
+    regente: {type: mongoose.Schema.Types.ObjectId, ref: 'professores'}
 });
 
 const Cadeira = module.exports = mongoose.model('unidadeCurricular', CadeiraSchema);
