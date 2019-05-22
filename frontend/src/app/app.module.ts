@@ -21,6 +21,7 @@ import { UserComponent } from './components/user/user.component';
 
 
 import { IssueService } from './issue.service';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
   { path: 'index', component: IndexComponent},
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'consult', component: ConsultComponent},
   { path: 'availability', component: AvailabilityComponent},
   { path: 'login', component: LoginComponent},
+  { path: 'admin', component: AdminComponent},
   { path: '', redirectTo: 'login', pathMatch: 'full'}
 ];
 
@@ -40,6 +42,7 @@ const routes: Routes = [
     IndexComponent,
     LoginComponent,
     UserComponent,
+    AdminComponent,
   ],
   imports: [
     BrowserModule,

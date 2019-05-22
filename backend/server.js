@@ -2,6 +2,7 @@ var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var xlsx = require('xlsx');
 
 var Issue = require('./models/issue');
 var Professor = require('./models/professor');
@@ -11,6 +12,15 @@ const app = express();
 const router = express.Router();
 
 //npm xlsx
+/* var obj = xlsx.parse(__dirname + '/DI-2018_19.xlsx'); // parses a file
+
+console.log(obj); */
+
+var workbook = xlsx.readFile('DI-2018_19.xlsx');
+var sheet_name_list = workbook.SheetNames;
+var xlData = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+console.log(xlData);
+
 
 app.use(cors());
 app.use(bodyParser.json());
