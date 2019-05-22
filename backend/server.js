@@ -102,7 +102,7 @@ router.route('/issues/delete/:id').get((req, res) => {
 
 
 
-    var joao = new Professor({ id: 1, nome: "Joao"});
+    var joao = new Professor({ nome: "Joao"});
 
     joao.save(function (err) {
         if (err) console.log("primeiro" + err);
@@ -116,6 +116,13 @@ router.route('/issues/delete/:id').get((req, res) => {
           // thats it!
         });
       });
+
+      var myId = joao.find({name: "Joao"})._id;
+
+
+      console.log(uc.find({_id: myId}));
+
+
 
 app.use('/', router);
 
