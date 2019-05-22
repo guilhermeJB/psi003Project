@@ -117,10 +117,12 @@ router.route('/issues/delete/:id').get((req, res) => {
         });
       });
 
-      var myId = joao.find({name: "Joao"})._id;
+     console.log(Professor.find());
+
+      //console.log(myId);
 
 
-      console.log(uc.find({_id: myId}));
+      //console.log(UC.find({_id: myId}).regente.nome);
 
 
 
