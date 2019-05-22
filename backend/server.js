@@ -112,7 +112,7 @@ router.route('/issues/delete/:id').get((req, res) => {
             regente: joao._id });
       
         uc.save(function (err) {
-          if (err) return console.log("segundo" + err);
+          if (err) return console.log("segundo" + err); //mongo --username psi003 --password --authenticationDatabase psi003 appserver.alunos.di.fc.ul.pt/psi003
           // thats it!
         });
       });
