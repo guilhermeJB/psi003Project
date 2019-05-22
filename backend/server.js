@@ -102,7 +102,7 @@ router.route('/issues/delete/:id').get((req, res) => {
 
 
 
-    var joao = new Professor({_id: 0, nome: "Joao"});
+    var joao = new Professor({ id: 1, nome: "Joao"});
 
     joao.save(function (err) {
         if (err) console.log("primeiro" + err);

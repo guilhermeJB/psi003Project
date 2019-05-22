@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 
 let professorSchema = new mongoose.Schema({
-    _id: Number,
+    id: Number,
     nome: String,
 });
 
