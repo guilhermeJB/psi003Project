@@ -105,14 +105,14 @@ router.route('/issues/delete/:id').get((req, res) => {
     var joao = new Professor({_id: 0, nome: "Joao"});
 
     joao.save(function (err) {
-        if (err) return handleError(err);
+        if (err) console.log("primeiro" + err);
       
         var uc = new UC({
             nome: "Aplicacoes Web",
             regente: joao._id });
       
         uc.save(function (err) {
-          if (err) return handleError(err);
+          if (err) return console.log("segundo" + err);
           // thats it!
         });
       });
