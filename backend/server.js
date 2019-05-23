@@ -20,7 +20,24 @@ console.log(obj); */
 var workbook = xlsx.readFile('DI-2018_19.xlsx');
 var sheet_name_list = workbook.SheetNames;
 var xlData = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-console.log(xlData);
+//console.log(xlData);
+console.log("Teste: ");
+
+    console.log(xlData[0]);
+
+    var Latinise={};
+    Latinise.latin_map={
+        "á":"a",
+        "ã":"a",
+        "õ":"o",
+        "ó":"o",
+        "ç":"c"};
+   
+    String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a})};
+    String.prototype.latinize=String.prototype.latinise;
+
+     console.log(xlData[0].DEPARTAMENTO.latinise());
+
 
 
 app.use(cors());
