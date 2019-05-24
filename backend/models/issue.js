@@ -1,16 +1,9 @@
 var mongoose = require('mongoose');
 
-let IssueSchema = new mongoose.Schema({
-    nome: {
-        type:  String
-    },
-    nVig: {
-        type: String
-    ,
-    vigTotal: {
-        type: String
-    }
-}
+let profCSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    professor: {type: mongoose.Schema.Types.ObjectId, ref: 'professores'},
+    cadeira: {type: mongoose.Schema.Types.ObjectId, ref: 'unidadeCurricular'}
 });
 
-const Issue = module.exports = mongoose.model('issue', IssueSchema);
+const profC = module.exports = mongoose.model('profC', profCSchema);

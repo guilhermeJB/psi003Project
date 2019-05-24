@@ -21,6 +21,26 @@ var workbook = xlsx.readFile('DI-2018_19.xlsx');
 var sheet_name_list = workbook.SheetNames;
 var xlData = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
 //console.log(xlData);
+<<<<<<< HEAD
+=======
+console.log("Teste: ");
+
+    console.log(xlData[0]);
+
+    var Latinise={};
+    Latinise.latin_map={
+        "á":"a",
+        "ã":"a",
+        "õ":"o",
+        "ó":"o",
+        "ç":"c"};
+   
+    String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a})};
+    String.prototype.latinize=String.prototype.latinise;
+
+     console.log(xlData[0].DEPARTAMENTO.latinise());
+
+>>>>>>> 29eb72fbf8c652e62a02fec1ad396a236d9a9f13
 
 console.log("Teste: ");
 
@@ -153,7 +173,20 @@ router.route('/issues/delete/:id').get((req, res) => {
         });
       });
 
+<<<<<<< HEAD
      console.log(Professor.find({name: "Joao"}).select("nome"));
+=======
+     var query = Professor.find();
+     query.select("_id nome");
+
+     query.exec(function(err, data){
+        if(err) return handleError(err);
+
+        console.log(data);
+        console.log("---------------------------------------------------------------------------------------------------------------");
+        console.log(data[0]);
+     });
+>>>>>>> 29eb72fbf8c652e62a02fec1ad396a236d9a9f13
 
       //console.log(myId);
 
