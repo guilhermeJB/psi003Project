@@ -33,6 +33,8 @@
       <mat-divider></mat-divider>
       <br>
       <table mat-table [dataSource]="issues">
+        
+       <!-- Exame -->
         <ng-container matColumnDef="nome">
           <th mat-header-cell *matHeaderCellDef>Nome:</th>
           <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
@@ -41,6 +43,24 @@
         <ng-container matColumnDef="nVig">
           <th mat-header-cell *matHeaderCellDef>Nº Vigilancias:</th>
           <td mat-cell *matCellDef="let element"> {{element.nVig}} </td>
+        </ng-container>
+        
+        <!-- Hora Inicio -->
+        <ng-container matColumnDef="hInicio">
+          <th mat-header-cell *matHeaderCellDef>hora Inicio:</th>
+          <td mat-cell *matCellDef="let element"> {{element.horaI}} </td>
+        </ng-container>
+        
+        <!-- Hora Fim -->
+        <ng-container matColumnDef="horaF">
+          <th mat-header-cell *matHeaderCellDef>hora Fim:</th>
+          <td mat-cell *matCellDef="let element"> {{element.horaF}} </td>
+        </ng-container>
+        
+        <!-- Salas de exame -->
+        <ng-container matColumnDef="salas">
+          <th mat-header-cell *matHeaderCellDef>Salas:</th>
+          <td mat-cell *matCellDef="let element"> {{element.salas}} </td>
         </ng-container>
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -51,3 +71,4 @@
     </mat-card>
   </div>
   
+<!-- Perguntar -->
