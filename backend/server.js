@@ -1,3 +1,4 @@
+
 var express = require('express');
 var cors = require('cors');
 var bodyParser = require('body-parser');
@@ -12,38 +13,76 @@ var UC = require('./models/uC');
 const app = express();
 const router = express.Router();
 
-//npm xlsx
-/* var obj = xlsx.parse(__dirname + '/DI-2018_19.xlsx'); // parses a file
-
-console.log(obj); */
-
 var workbook = xlsx.readFile('DI-2018_19.xlsx');
 var sheet_name_list = workbook.SheetNames;
 var xlData = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
-//console.log(xlData);
-console.log("Teste: ");
 
-    console.log(xlData[0]);
 
-    var Latinise={};
-    Latinise.latin_map={
-        "á":"a",
-        "ã":"a",
-        "õ":"o",
-        "ó":"o",
-        "ç":"c"};
-   
-    String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a})};
-    String.prototype.latinize=String.prototype.latinise;
+function insertUC(xlData){
+    for (var i = 0; i < 4; i++){
+        
+        var obj = xlData[i];
+        var uc = new UC();
+        for (var key in obj){
+            var value = obj[key];
+            
+            if(key == "CODIGO_UC") uc.codigo = value;
+            else if(key == "UNIDADE_CURRICULAR") uc.nome = value;
+            else if(key == "REGENTE"){
+                var p = new Professor({nome: value})
+                p.save();
+                uc.regente = p._id;
+            }
+          var value = obj[key];
+          console.log("--->  " + key + ": " + value);
+          uc.save();
 
-     console.log(xlData[0].DEPARTAMENTO.latinise());
+        }
+      }
+}
 
+function insertProf(xlData){
+    for(var i = 0; i < xlData.length; i++){
+        var obj = xlData[i];
+        console.log(obj);
+        for(var j = 0; j < obj.length; j++){
+
+            console.log(obj[j]);
+            
+            if(key.toUpperCase() == "SERVICO_DOCENTE"){
+                var value = obj[j];
+                console.log("Value:  " + value);
+
+                Professor.find({nome: value}).limit(1).then( (data) => {
+                    console.log(data);
+                    if(data.length === 0){
+                       // console.log(data);
+                       var  p = new Professor({nome: value});
+
+                       p.save()
+                        .then(issue => {
+                        console.log("success!");
+                        })
+                        .catch(err => {
+                       console.log('Failed to create new record');
+                    })
+                       //console.log("Professor:  " + p);
+                      
+                    }else{
+                        console.log("Jah existe essa pessoa.");
+                    }
+                });
+            }
+        }
+    }
+
+}
 
 
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://psi003:psi003@localhost:27017/psi003?retryWrites=true&authSource=psi003',  {useNewUrlParser: true}, (err) => {
+mongoose.connect('mongodb://localhost:27017/teste',  {useNewUrlParser: false}, (err) => {  //mongodb://psi003:psi003@localhost:27017/psi003?retryWrites=true&authSource=psi003
     if(err)
         console.log(err);
     else
@@ -55,6 +94,9 @@ const connection = mongoose.connection;
 connection.once('open', () => {
     console.log('MongoDB database connection established successfully!');
 });
+
+//insertUC(xlData);
+insertProf(xlData);
 
 router.route('/issues').get((req, res) => {
     Issue.find((err, issues) => {
@@ -116,41 +158,6 @@ router.route('/issues/delete/:id').get((req, res) => {
             res.json('Remove successfully');
     });
 });
-
-
-
-    var joao = new Professor({ nome: "Joao"});
-
-    joao.save(function (err) {
-        if (err) console.log("primeiro" + err);
-      
-        var uc = new UC({
-            nome: "Aplicacoes Web",
-            regente: joao._id });
-      
-        uc.save(function (err) {
-          if (err) return console.log("segundo" + err); //mongo --username psi003 --password --authenticationDatabase psi003 appserver.alunos.di.fc.ul.pt/psi003
-          // thats it!
-        });
-      });
-
-     var query = Professor.find();
-     query.select("_id nome");
-
-     query.exec(function(err, data){
-        if(err) return handleError(err);
-
-        console.log(data);
-        console.log("---------------------------------------------------------------------------------------------------------------");
-        console.log(data[0]);
-     });
-
-      //console.log(myId);
-
-
-      //console.log(UC.find({_id: myId}).regente.nome);
-
-
 
 app.use('/', router);
 
