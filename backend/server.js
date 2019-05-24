@@ -16,6 +16,13 @@ const router = express.Router();
 var workbook = xlsx.readFile('DI-2018_19.xlsx');
 var sheet_name_list = workbook.SheetNames;
 var xlData = xlsx.utils.sheet_to_json(workbook.Sheets[sheet_name_list[0]]);
+<<<<<<< HEAD
+=======
+//console.log(xlData);
+<<<<<<< HEAD
+=======
+console.log("Teste: ");
+>>>>>>> bf3587ee25929bb497670c47fef637de2d6824f9
 
 
 function insertUC(xlData){
@@ -76,8 +83,48 @@ function insertProf(xlData){
         }
     }
 
+<<<<<<< HEAD
+}
+=======
+>>>>>>> 29eb72fbf8c652e62a02fec1ad396a236d9a9f13
+>>>>>>> bf3587ee25929bb497670c47fef637de2d6824f9
+
+console.log("Teste: ");
+
+    console.log(xlData[0]);
+
+    var Latinise={};
+    Latinise.latin_map={
+        "á":"a",
+        "ã":"a",
+        "õ":"o",
+        "ó":"o",
+        "ç":"c"};
+   
+    String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a})};
+    String.prototype.latinize=String.prototype.latinise;
+
+    console.log(xlData[0].DEPARTAMENTO.latinise());
+//Adicionar regentes
+var i;
+for (i = 0; i < xlData.length; i++) {
+
+    if (!baseDados) {
+
+        baseDados.add(new Professor({xlData[i].REGENTE.latinise(), xlData[i].TIPO_DE_REGENTE.latinise(), ?, "Regente", ?, ?}));
+
+    } else {
+
+        //adicionar cadeira se ainda nao estiver na lista de cadeiras
+
+    }
+
 }
 
+
+
+
+///////////
 
 app.use(cors());
 app.use(bodyParser.json());
@@ -159,6 +206,48 @@ router.route('/issues/delete/:id').get((req, res) => {
     });
 });
 
+<<<<<<< HEAD
+=======
+
+
+    var joao = new Professor({ nome: "Joao"});
+
+    joao.save(function (err) {
+        if (err) console.log("primeiro" + err);
+      
+        var uc = new UC({
+            nome: "Aplicacoes Web",
+            regente: joao._id });
+      
+        uc.save(function (err) {
+          if (err) return console.log("segundo" + err); //mongo --username psi003 --password --authenticationDatabase psi003 appserver.alunos.di.fc.ul.pt/psi003
+          // thats it!
+        });
+      });
+
+<<<<<<< HEAD
+     console.log(Professor.find({name: "Joao"}).select("nome"));
+=======
+     var query = Professor.find();
+     query.select("_id nome");
+
+     query.exec(function(err, data){
+        if(err) return handleError(err);
+
+        console.log(data);
+        console.log("---------------------------------------------------------------------------------------------------------------");
+        console.log(data[0]);
+     });
+>>>>>>> 29eb72fbf8c652e62a02fec1ad396a236d9a9f13
+
+      //console.log(myId);
+
+
+      //console.log(UC.find({_id: myId}).regente.nome);
+
+
+
+>>>>>>> bf3587ee25929bb497670c47fef637de2d6824f9
 app.use('/', router);
 
 app.listen(3003, () => console.log("Express server running on port 3003"));
