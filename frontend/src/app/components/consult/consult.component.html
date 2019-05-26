@@ -32,15 +32,35 @@
       <h3>Vigilancias:</h3>
       <mat-divider></mat-divider>
       <br>
-      <table mat-table [dataSource]="issues">
-        <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef>Nome:</th>
-          <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      <table mat-table [dataSource]="Vigilancias">
+        <ng-container matColumnDef="exame">
+          <th mat-header-cell *matHeaderCellDef>Exame:</th>
+          <td mat-cell *matCellDef="let element"> {{element.exame}} </td>
         </ng-container>
   
-        <ng-container matColumnDef="nVig">
-          <th mat-header-cell *matHeaderCellDef>Nº Vigilancias:</th>
-          <td mat-cell *matCellDef="let element"> {{element.nVig}} </td>
+        <ng-container matColumnDef="data">
+          <th mat-header-cell *matHeaderCellDef>Data:</th>
+          <td mat-cell *matCellDef="let element"> {{element.data}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dia">
+          <th mat-header-cell *matHeaderCellDef>Dia:</th>
+          <td mat-cell *matCellDef="let element"> {{element.dia}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hInicio">
+          <th mat-header-cell *matHeaderCellDef>Hora Início:</th>
+          <td mat-cell *matCellDef="let element"> {{element.hInicio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="hFim">
+          <th mat-header-cell *matHeaderCellDef>Hora Fim:</th>
+          <td mat-cell *matCellDef="let element"> {{element.hFim}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="sala">
+          <th mat-header-cell *matHeaderCellDef>Sala:</th>
+          <td mat-cell *matCellDef="let element"> {{element.sala}} </td>
         </ng-container>
   
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
