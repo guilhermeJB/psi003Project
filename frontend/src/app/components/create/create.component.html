@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
   <br>
   <mat-card>
     <section class="mat-typography">
@@ -25,4 +25,10 @@
     <mat-divider></mat-divider>
     <br><br>
     <button type="submit" (click)="addIssue(nome.value, nVig.value, diasV.value)" [disabled]="createForm.pristine || createForm.invalid" mat-raised-button color="primary">Save</button>
+  </form> -->
+
+  <h1>Input file</h1>
+  <form method="post" enctype="multipart/form-data" action="/">
+    <input type="file" name="filename">
+    <input type="submit" value="upload"
   </form>
