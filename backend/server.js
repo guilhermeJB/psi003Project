@@ -14,6 +14,9 @@ var UC = require('./models/uC');
 const app = express();
 const router = express.Router();
 
+const  multipart  =  require('connect-multiparty');  
+const  multipartMiddleware  =  multipart({ uploadDir:  './uploads' });
+
 
 function insertUC(xlData){
     for (var i = 0; i < 4; i++){
@@ -66,6 +69,10 @@ router.route('/issues').get((req, res) => {
         else
             res.json(issues);
     });
+});
+
+router.route('/exames').post((req, res) => {
+    console.log(req);
 });
 
 router.route('/issues/:id').get((req, res) => {
@@ -137,6 +144,14 @@ router.route('/issues/update/:id').post((req, res) => {
                 res.status(400).send('Update failed');
             });
         }
+    });
+});
+
+
+
+app.post('/api/upload', multipartMiddleware, (req, res) => {  
+    res.json({
+        'message': 'File uploaded successfully'
     });
 });
 

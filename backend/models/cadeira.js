@@ -10,9 +10,8 @@ var CadeiraSchema = new Schema({
     ano: {type:Number, enum:[1,2,3], required:true},
     semestre: {type:Number, enum:[1,2], required: true},
     ciclo: {type:Number, enum:[1,2], required : true},
-    professorRegente: {type: Schema.Types.ObjectId, ref:'Professor'},
+    professorRegente: {type: Schema.Types.ObjectId, ref:'Professor', required: true},
     professoresAuxiliar: [{type: Schema.Types.ObjectId, ref:'Professor',required: true}]
-
 });
 
 module.exports = mongoose.model('Cadeira', CadeiraSchema);

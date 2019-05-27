@@ -14,7 +14,7 @@ export class ConsultComponent implements OnInit {
 
   nome: String;
   issues: Issue[];
-  displayedColumns = ['nome', 'nVig'];
+  displayedColumns = ['exame', 'data', 'dia', 'hInicio', 'hFim', 'sala'];
 
   // tslint:disable-next-line:max-line-length
   constructor(private issueService: IssueService, private router: Router, private route: ActivatedRoute) {

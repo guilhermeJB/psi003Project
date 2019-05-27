@@ -4,8 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { MatSnackBar } from '@angular/material';
 
-import { IssueService } from '../../issue.service';
-import { Issue } from '../../issue.model';
+import { CreateService } from '../../create.service';
 
 @Component({
   selector: 'app-create',
@@ -14,24 +13,24 @@ import { Issue } from '../../issue.model';
 })
 export class CreateComponent implements OnInit {
 
-  issues: Issue[];
-  createForm: FormGroup;
-  
-    constructor(private issueService: IssueService, private router: Router, private fb: FormBuilder) {
-      this.createForm = this.fb.group({
-        nome: ['', Validators.required],
-        nVig: '',
-        diasV: ''
-      });
-    }
-  
-    ngOnInit() {
-    }
+  selectedFile: File = null;
 
-    addIssue(nome, nVig, vigTotal) {
-      this.issueService.addIssue(nome, nVig, vigTotal).subscribe(() => {
-        this.router.navigate(['/index']);
-      });
-    }
+  constructor(private createService: CreateService, private router: Router) {}
+
+  onFileSelected(event){
+    this.selectedFile = <File> event.target.files[0];
+  }
+
+  onUpload(){
+    this.createService.uploadFile(this.selectedFile).subscribe(() => {
+      this.router.navigate(['/index']);
+    });
+  }
+
+  ngOnInit(): void {
+    //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+    //Add 'implements OnInit' to the class.
+    
+  }
 
 }

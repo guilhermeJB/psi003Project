@@ -1,8 +1,21 @@
-.create-form {
-    min-width: 150px;
-    width: 100%;
+.header {
+    text-align: center;
 }
 
-.field-full-width {
-    width: 100%;
+.header h1 {
+    font-family: serif;
+    font-size: 38px;
+    font-family: 'Times New Roman';
+}
+
+.content {
+    margin: 100px;
+}
+
+.margin25 {
+    margin: 25px;
+}
+
+.upload {
+    cursor: pointer;
 }
